@@ -91,11 +91,12 @@ end
 run(function()
 	local times= 0
 	open= true
-    while times< 30 do
-        local tray = receive(inp)
+	while times< 30 do
+		print("hall")
+        	local tray = receive()
 		serve(tray)
 		times= times+ 1
 		w32.Sleep(5)
-    end
+	end
 	open= false
 end)
