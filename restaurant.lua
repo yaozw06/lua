@@ -24,12 +24,12 @@ end
 
 function restaurant.queue(order, callback)
 	print("queue ")
-    local nextAct = function(d)
-		print("nextAct ")
+    local nextCmd = function(d)
+		print("nextCmd ")
         callback(d)
     end
     table.insert(whiteboard, order)
-    table.insert(whiteboard, nextAct)
+    table.insert(whiteboard, nextCmd)
 end
 
 
@@ -41,11 +41,11 @@ function restaurant.kitchen()
     while open do
 		print("kitchen ")
         local order = table.remove(whiteboard, 1)
-        local nextCmd = table.remove(whiteboard, 1)
+        local act = table.remove(whiteboard, 1)
 		for k,v in pairs(order)  do
 			local tray= {}
 			tray[k]= makedish(v)
-            nextCmd(tray)
+            act(tray)
         end
     end
 	print("kitchen quit")
