@@ -94,7 +94,7 @@ run(function()
 	open= true
     while times<= 20 do
 		print("hall ".. times.." ")
-        local tray = receive(inp)
+        local tray = receive()
 		serve(tray)
 		times= times+ 1
 		w32.Sleep(10)
