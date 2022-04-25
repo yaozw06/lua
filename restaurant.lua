@@ -45,6 +45,7 @@ function restaurant.kitchen()
 		for k,v in pairs(order)  do
 			local tray= {}
 			tray[k]= makedish(v)
+			print("act callback")
             act(tray)
         end
     end
@@ -60,7 +61,7 @@ function receive()
 	order[tid]= did
     local co = coroutine.running()
     local toserve = (function(line)
-		print("resume to serve ")
+		print("resume to ")
         coroutine.resume(co, line)
 		print("after yield ")
     end)
@@ -89,14 +90,14 @@ function run(code)
 end
 
 run(function()
-	local times= 0
+	local times= 1
 	open= true
-	while times< 30 do
-		print("hall")
-        	local tray = receive()
+    while times<= 20 do
+		print("hall ".. times.." ")
+        local tray = receive(inp)
 		serve(tray)
 		times= times+ 1
-		w32.Sleep(5)
-	end
+		w32.Sleep(10)
+    end
 	open= false
 end)
