@@ -1,4 +1,4 @@
-
+-- Tested in luaforwindows 5.1.4-46
 local w32= require "w32"
 
 local whiteboard = {}
